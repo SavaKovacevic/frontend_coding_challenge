@@ -38,4 +38,5 @@ ul > li:hover,
 ul > li:active {
   color: white;
   border-bottom: 3px solid #fdee2d;
+  cursor: pointer;
 }

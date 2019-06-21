@@ -94,9 +94,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://itk-exam-api.herokuapp.com/api/offices').then(function (response) {
-  var offices = [];
-  offices.push(response.data);
+  formatOffices(response.data);
 });
+
+function formatOffices(offices) {
+  var containerEl = document.getElementById('offices');
+
+  for (var i = 0; i < offices.length; i++) {
+    var newOffice = "<div class=\"location-item\">\n            <img src=\"".concat(offices[i].photo, "\" alt=\"\">\n            <h2>").concat(offices[i].name, "</h2>\n            <p>").concat(offices[i].description, "</p>\n        </div>");
+    containerEl.innerHTML += newOffice;
+  }
+}
 
 /***/ }),
 /* 1 */
