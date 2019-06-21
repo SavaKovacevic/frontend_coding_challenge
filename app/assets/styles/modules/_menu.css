@@ -1,0 +1,41 @@
+.main-nav { 
+  background-color: $mainBlue;
+  display: block;
+  border-bottom: 3px solid $mainBorderColor;
+  width: 100%;
+  color: white;
+}
+
+.section-title {
+  display: inline-block;
+  width: 28%;
+  padding-left: 1rem;
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 4rem;
+  vertical-align:middle;
+}
+
+ul {
+  display: inline-block;
+  vertical-align:middle;
+  width: 70%;
+  margin: 0;
+}
+
+ul > li {
+  list-style: none;
+  display: inline-block;
+  width: 160px;
+  text-align: center;
+  color: #a2d9e6;
+  line-height: 4rem;
+  border-bottom: 3px solid transparent;
+}
+
+ul > li:hover,
+ul > li:active {
+  color: white;
+  border-bottom: 3px solid #fdee2d;
+}
