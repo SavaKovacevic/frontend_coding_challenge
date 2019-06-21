@@ -37,6 +37,11 @@ ul > li {
 ul > li:hover,
 ul > li:active {
   color: white;
+  cursor: pointer;
+}
+
+.active {
+  color: white;
   border-bottom: 3px solid #fdee2d;
   cursor: pointer;
 }

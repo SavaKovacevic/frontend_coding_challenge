@@ -355,7 +355,7 @@ template {
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  color: #333;
+  color: #292828;
 }
 
 img {
@@ -402,24 +402,153 @@ ul > li {
 ul > li:hover,
 ul > li:active {
   color: white;
+  cursor: pointer;
+}
+
+.active {
+  color: white;
   border-bottom: 3px solid #fdee2d;
   cursor: pointer;
 }
 
-.location-container {
-    display: flex;
-    flex-wrap: wrap;
+.location-list {
+    display: block;
+    width: auto;
     background-color: #13bbd3;
     margin: 1rem;
     border: 3px solid #009eb4;
     text-align: center;
 }
 
-.location-item {
-    flex: 1 0 21%;
-    margin: 5px;
-    background-color: white;
-    padding: 30px;
-    box-shadow: 0 1px 1px 2px rgba(50,143,157,1);
+.location-list .location-item {
+            height: 150px;
+            display: inline-block;
+            width: 100%;
+            display: flex;
+            align-items: center;
+    }
+
+.location-list .location-item .image-location-flag {
+            display: inline-block;
+        }
+
+.location-list .location-item .info {
+            display: flex;
+            height: 150px;
+            line-height: 150px;
+            text-align: left;
+            border-bottom: 3px solid #2da0b1;
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+.location-list .location-item .location-info {
+            display: block;
+            line-height: normal;
+            color: white;
+            font-weight: 400;
+            font-size: 1.9rem;
+            margin: 0 0 10px 0;
+            
+        }
+
+.location-list .location-item .image-location-flag{
+            width: 10%;
+        }
+
+.location-list .location-item img {
+            -o-object-fit: cover;
+               object-fit: cover;
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+        }
+
+.location-list .location-item .image-location-container {
+            background-color: #cccccc;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0 auto;
+            color: #313130;
+            line-height: 70px;
+            text-align: center;
+        }
+
+.location-list .location-item p {
+            display: block;
+            line-height: normal;
+            color: #2f5a5e;
+            font-weight: 400;
+            font-size: 1.7rem;
+            margin: 0;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 1.2em;
+        }
+
+.location-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: auto;
+    background-color: #13bbd3;
+    margin: 1rem;
+    border: 3px solid #009eb4;
+    text-align: center;
+}
+
+.location-grid .location-item {
+        flex: 1 0 calc(25% - 20px);
+        margin: 10px;
+        padding: 20px 0;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0 1px 1px 2px rgba(50,143,157,1);
+    }
+
+.location-grid .location-item .location-info {
+            margin-bottom: 2.5rem;
+        }
+
+.location-grid .location-item .image-location-container {
+            background-color: #cccccc;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            font-size: 3rem;
+            font-weight: 500;
+            margin: 0 auto;
+            color: #313130;
+            line-height: 100px;
+            text-align: center;
+        }
+
+.location-grid .location-item img {
+            -o-object-fit: cover;
+               object-fit: cover;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+
+.location-grid .location-item p {
+            display: block;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 7.2em;
+            line-height: 1.2;
+            font-weight: 500;
+        }
+
+.hide {
+    display: none;
 }
 

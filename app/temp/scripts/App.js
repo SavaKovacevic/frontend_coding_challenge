@@ -101,9 +101,43 @@ function formatOffices(offices) {
   var containerEl = document.getElementById('offices');
 
   for (var i = 0; i < offices.length; i++) {
-    var newOffice = "<div class=\"location-item\">\n            <img src=\"".concat(offices[i].photo, "\" alt=\"\">\n            <h2>").concat(offices[i].name, "</h2>\n            <p>").concat(offices[i].description, "</p>\n        </div>");
-    containerEl.innerHTML += newOffice;
+    var template = "<div class=\"info\"><h2 class=\"location-info\">".concat(offices[i].name, "</h2>\n            <p>").concat(offices[i].description, "</p></div>");
+
+    if (offices[i].photo == null) {
+      var letter = offices[i].name;
+      var newOffice = "<div class=\"location-item\">\n            <div class=\"image-location-container\">".concat(letter.charAt(0), "</div>\n            ").concat(template, "\n        </div>");
+      containerEl.innerHTML += newOffice;
+    } else {
+      var _newOffice = "<div class=\"location-item\">\n            <div class=\"image-location-flag\"><img src=\"".concat(offices[i].photo, "\" alt=\"\"></div>\n            ").concat(template, "\n        </div>");
+
+      containerEl.innerHTML += _newOffice;
+    }
   }
+}
+
+var listItems = document.querySelectorAll('li');
+
+for (var i = 0; i < listItems.length; i++) {
+  listItems[i].addEventListener('click', function () {
+    var current = document.querySelector(".active");
+    current.classList.remove("active");
+    this.className += " active";
+    var change = document.getElementById('offices');
+
+    if (listItems[0].classList.contains("active")) {
+      change.classList.remove("hide");
+      change.classList.remove("location-grid");
+      change.classList.add("location-list");
+    } else if (listItems[1].classList.contains("active")) {
+      change.classList.remove("hide");
+      change.classList.remove("location-list");
+      change.classList.add("location-grid");
+    } else {
+      change.classList.remove("location-list");
+      change.classList.remove("location-grid");
+      change.classList.add("hide");
+    }
+  });
 }
 
 /***/ }),

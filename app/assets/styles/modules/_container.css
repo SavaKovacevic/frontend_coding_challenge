@@ -1,16 +1,140 @@
-.location-container {
-    display: flex;
-    flex-wrap: wrap;
+.location-list {
+    display: block;
+    width: auto;
     background-color: $mainBlue;
     margin: 1rem;
     border: 3px solid $mainBorderColor;
     text-align: center;
+
+        .location-item {
+            height: 150px;
+            display: inline-block;
+            width: 100%;
+            display: flex;
+            align-items: center; 
+
+        .image-location-flag {
+            display: inline-block;
+        }
+
+        .info {
+            display: flex;
+            height: 150px;
+            line-height: 150px;
+            text-align: left;
+            border-bottom: 3px solid #2da0b1;
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .location-info {
+            display: block;
+            line-height: normal;
+            color: white;
+            font-weight: 400;
+            font-size: 1.9rem;
+            margin: 0 0 10px 0;
+            
+        }
+
+        .image-location-flag{
+            width: 10%;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+        }
+
+        .image-location-container {
+            background-color: #cccccc;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0 auto;
+            color: #313130;
+            line-height: 70px;
+            text-align: center;
+        }
+
+        p {
+            display: block;
+            line-height: normal;
+            color: #2f5a5e;
+            font-weight: 400;
+            font-size: 1.7rem;
+            margin: 0;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 1.2em;
+        }
+    }
 }
 
-.location-item {
-    flex: 1 0 21%;
-    margin: 5px;
-    background-color: white;
-    padding: 30px;
-    box-shadow: 0 1px 1px 2px rgba(50,143,157,1);
+
+
+.location-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: auto;
+    background-color: $mainBlue;
+    margin: 1rem;
+    border: 3px solid $mainBorderColor;
+    text-align: center;
+
+    .location-item {
+        flex: 1 0 calc(25% - 20px);
+        margin: 10px;
+        padding: 20px 0;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0 1px 1px 2px rgba(50,143,157,1);
+
+        .location-info {
+            margin-bottom: 2.5rem;
+        }
+
+        .image-location-container {
+            background-color: #cccccc;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            font-size: 3rem;
+            font-weight: 500;
+            margin: 0 auto;
+            color: #313130;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+
+        p {
+            display: block;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 7.2em;
+            line-height: 1.2;
+            font-weight: 500;
+        }
+    }
+}
+
+.hide {
+    display: none;
 }
