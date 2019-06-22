@@ -2,16 +2,24 @@
     display: block;
     width: auto;
     background-color: $mainBlue;
-    margin: 1rem;
+    margin: .5rem;
     border: 3px solid $mainBorderColor;
     text-align: center;
 
+    @mixin atSmall {
+        margin: 1rem;
+    }
+
         .location-item {
-            height: 150px;
+            height: 100px;
             display: inline-block;
             width: 100%;
             display: flex;
             align-items: center; 
+
+            @mixin atSmall {
+                height: 150px;
+            }
 
         .image-location-flag {
             display: inline-block;
@@ -19,14 +27,27 @@
 
         .info {
             display: flex;
-            height: 150px;
-            line-height: 150px;
+            height: 100px;
+            line-height: 100px;
             text-align: left;
             border-bottom: 3px solid #2da0b1;
-            width: 90%;
+            width: 80%;
             display: flex;
             justify-content: center;
             flex-direction: column;
+
+            @mixin atSmall {
+                height: 150px;
+                line-height: 150px;
+            }
+
+            @mixin atMedium {
+                width: 85%;
+            }
+
+            @mixin atLarge {
+                width: 90%;
+            }
         }
 
         .location-info {
@@ -34,33 +55,66 @@
             line-height: normal;
             color: white;
             font-weight: 400;
-            font-size: 1.9rem;
+            font-size: 1.2rem;
             margin: 0 0 10px 0;
+
+            @mixin atSmall {
+                font-size: 1.5rem;
+            }
+
+            @mixin atMedium {
+                font-size: 1.7rem;
+            }
+
+            @mixin atLarge {
+                font-size: 1.9rem;
+            }
             
         }
 
         .image-location-flag{
-            width: 10%;
+            width: 20%;
+
+            @mixin atMedium {
+                width: 15%;
+            }
+
+            @mixin atLarge {
+                width: 10%;
+            }
         }
 
         img {
             object-fit: cover;
             border-radius: 50%;
-            height: 70px;
-            width: 70px;
+            height: 50px;
+            width: 50px;
+            margin: 0 auto;
+
+            @mixin atSmall {
+                height: 70px;
+                width: 70px;
+
+            }
         }
 
         .image-location-container {
             background-color: #cccccc;
-            height: 70px;
-            width: 70px;
+            height: 50px;
+            width: 50px;
             border-radius: 50%;
             font-size: 2rem;
             font-weight: 500;
             margin: 0 auto;
             color: #313130;
-            line-height: 70px;
+            line-height: 50px;
             text-align: center;
+
+            @mixin atSmall {
+                height: 70px;
+                width: 70px;
+                line-height: 70px;
+            }
         }
 
         p {
@@ -68,12 +122,24 @@
             line-height: normal;
             color: #2f5a5e;
             font-weight: 400;
-            font-size: 1.7rem;
+            font-size: 1rem;
             margin: 0;
             text-overflow: ellipsis;
             word-wrap: break-word;
             overflow: hidden;
             max-height: 1.2em;
+
+            @mixin atSmall {
+                font-size: 1.3rem;
+            }
+
+            @mixin atMedium{
+                font-size: 1.5rem;
+            }
+
+            @mixin atLarge{
+                font-size: 1.7rem;
+            }
         }
     }
 }
@@ -81,46 +147,101 @@
 
 
 .location-grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: auto;
+
+    display:Grid;
+    grid-template-columns:  1fr;
+    grid-template-rows: repeat(12, calc(100vw / 1 - 2.4rem));
+    grid-gap: 1.2em;
+    padding: 1.2em;
     background-color: $mainBlue;
     margin: 1rem;
     border: 3px solid $mainBorderColor;
     text-align: center;
 
+    @mixin atSmall{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, calc(100vw / 2 - 2.4rem));
+        grid-gap: 1.2em;
+        padding: 1.2em;
+        }
+
+    @mixin atLarge{
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, calc(100vw / 3 - 2.4rem));
+        grid-gap: 1.2em;
+        padding: 1.2em;
+        }
+
+    @mixin atLarger {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, calc(100vw / 4 - 2.4rem));
+        grid-gap: 1.2em;
+        padding: 1.2em;
+    }
+
     .location-item {
-        flex: 1 0 calc(25% - 20px);
-        margin: 10px;
-        padding: 20px 0;
+        position: relative;
+        display: block;
+        grid-column: span 1;
+        grid-row: span 1;
         background-color: white;
-        padding: 30px;
         box-shadow: 0 1px 1px 2px rgba(50,143,157,1);
+        padding-top: 10px;
 
         .location-info {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            padding: 0 10px;
+
+            @mixin atSmall {
+                font-size: 2rem;
+                margin-bottom: 2.5rem;
+                padding: 0;
+            }
         }
 
         .image-location-container {
             background-color: #cccccc;
-            height: 100px;
-            width: 100px;
+            height: 50px;
+            width: 50px;
             border-radius: 50%;
-            font-size: 3rem;
+            font-size: 1.5rem;
             font-weight: 500;
             margin: 0 auto;
             color: #313130;
-            line-height: 100px;
+            line-height: 50px;
             text-align: center;
+
+            @mixin atSmall {
+                height: 50px;
+                width: 50px;
+                line-height: 50px;
+                font-size: 1.5rem;
+            }
+
+            @mixin atMedium {
+                height: 100px;
+                width: 100px;
+                font-size: 3rem;
+                line-height: 100px;
+            }
         }
 
         img {
             object-fit: cover;
             border-radius: 50%;
-            height: 100px;
-            width: 100px;
+            height: 50px;
+            width: 50px;
+
+            @mixin atSmall {
+                height: 50px;
+                width: 50px;
+            }
+
+            @mixin atMedium {
+                height: 100px;
+                width: 100px;
+            }
         }
 
         p {
@@ -128,9 +249,20 @@
             text-overflow: ellipsis;
             word-wrap: break-word;
             overflow: hidden;
-            max-height: 7.2em;
-            line-height: 1.2;
+            max-height: 4rem;
+            line-height: 1rem;
             font-weight: 500;
+            padding: 0 15px;
+
+            @mixin atSmall {
+                 max-height: 3.6rem;
+                line-height: 1.2;
+            }
+
+            @mixin atMedium {
+                max-height: 4.8rem;
+                line-height: 1.2;
+            }
         }
     }
 }
