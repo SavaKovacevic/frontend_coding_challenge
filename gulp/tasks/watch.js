@@ -15,58 +15,6 @@ gulp.task('watch', function(){
 		browserSync.reload();
 	});
 
-	watch('./app/map.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kurs-nemackog.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kurs-engleskog.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/upisi-kurs.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kursevi.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kursevi-za-osnovce.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kursevi-za-tinejdzere.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kursevi-za-odrasle.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/medjunarodni-ispiti.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/kontakt.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/zasto-tower.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/prevodilacke-usluge.html', function(){
-		browserSync.reload();
-	});
-
-	watch('./app/test.html', function(){
-		browserSync.reload();
-	});
-
 	watch('./app/assets/styles/**/*.css', function(){
 		gulp.start('cssInject');
 	});
