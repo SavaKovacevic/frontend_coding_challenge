@@ -94,15 +94,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
  //STOP LOADER IF DATA IS FETCHED
 
-fetch('https://itk-exam-api.herokuapp.com/api/offices').then(function () {
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://itk-exam-api.herokuapp.com/api/offices').then(function (response) {
   var overlay = document.querySelector('.loader-overlay');
   overlay.classList.remove("loader-overlay");
   overlay.classList.add("hide");
-}); //GRID AND LIST VIEW DATA
-
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://itk-exam-api.herokuapp.com/api/offices').then(function (response) {
   formatOffices(response.data);
-});
+  getCordinates(response.data);
+}); //GRID AND LIST VIEW
 
 function formatOffices(offices) {
   var containerEl = document.getElementById('offices');
@@ -153,6 +151,45 @@ for (var i = 0; i < listItems.length; i++) {
       map.classList.add("visible");
     }
   });
+} //MAP
+
+
+function getCordinates(cordinate) {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 3,
+    center: new google.maps.LatLng(0, 0),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  var _loop = function _loop(_i) {
+    icon = {
+      url: cordinate[_i].photo,
+      // url
+      scaledSize: new google.maps.Size(40, 25),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 0)
+    };
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(Number(cordinate[_i].latitude), Number(cordinate[_i].longitude)),
+      map: map,
+      icon: icon
+    });
+    locationInfo = new google.maps.InfoWindow();
+    google.maps.event.addListener(marker, 'click', function (marker, j) {
+      return function () {
+        locationInfo.setContent(cordinate[_i].name);
+        locationInfo.open(map, marker);
+      };
+    }(marker, j));
+  };
+
+  for (var _i = 0; _i < cordinate.length; _i++) {
+    var icon;
+    var locationInfo;
+    var marker, j;
+
+    _loop(_i);
+  }
 }
 
 /***/ }),

@@ -1,19 +1,16 @@
 import axios from 'axios';
 
-
 //STOP LOADER IF DATA IS FETCHED
-fetch('https://itk-exam-api.herokuapp.com/api/offices')
-    .then(function() {
+axios.get('https://itk-exam-api.herokuapp.com/api/offices')
+    .then(response => {
         let overlay = document.querySelector('.loader-overlay');
         overlay.classList.remove("loader-overlay")
         overlay.classList.add("hide");
+        formatOffices(response.data);
+        getCordinates(response.data);
     });
 
-//GRID AND LIST VIEW DATA
-axios.get('https://itk-exam-api.herokuapp.com/api/offices').then(response => {
-    formatOffices(response.data);
-})
-
+//GRID AND LIST VIEW
 function formatOffices(offices) {
     let containerEl = document.getElementById('offices');
 
@@ -73,4 +70,36 @@ for (let i = 0; i < listItems.length; i++) {
     });
 }
 
+//MAP
+function getCordinates(cordinate) {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 3,
+        center: new google.maps.LatLng(0, 0),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
 
+    for (let i = 0; i < cordinate.length; i++) {
+        var icon = {
+            url: cordinate[i].photo, // url
+            scaledSize: new google.maps.Size(40, 25),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 0)
+        };
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(Number(cordinate[i].latitude), Number(cordinate[i].longitude)),
+            map: map,
+            icon: icon
+        });
+
+        var locationInfo = new google.maps.InfoWindow();
+
+        var marker, j;
+
+        google.maps.event.addListener(marker, 'click', (function (marker, j) {
+            return function () {
+                locationInfo.setContent(cordinate[i].name);
+                locationInfo.open(map, marker);
+            }
+        })(marker, j));
+    }
+} 
