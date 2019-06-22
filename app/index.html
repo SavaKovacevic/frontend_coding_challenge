@@ -1,33 +1,98 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap&subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap&subset=latin-ext"
+    rel="stylesheet">
   <title>Clear View Escapes</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <link rel="stylesheet" href="temp/styles/styles.css">
 
 </head>
+
 <body>
 
-<header class="main-nav">
-  <nav>
-    <h1 class="section-title">Offices</h1>
-    <ul class= "nav-items">
-      <li class="active">List</li>
-      <li>Grid</li>
-      <li>Map</li>
-    </ul>
-  </nav>
-</header>
+<!-- LOADER -->
+  <div class="loader-overlay">
+  <div class="loader"></div>
+  </div>
 
-<div id="offices" class="location-list">
+  <header class="main-nav">
+    <nav>
+      <h1 class="section-title">Offices</h1>
+      <ul class="nav-items">
+        <li class="active">List</li>
+        <li>Grid</li>
+        <li>Map</li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="offices" class="location-list">
+  </div>
+
+  <!-- MAP -->
+  <div id="map" class="hide"></div>
+
+  <script type="text/javascript" src="/temp/scripts/app.js"></script>
+  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+  <script type="text/javascript">
+  axios.get('https://itk-exam-api.herokuapp.com/api/offices').then(function(response) {
+    getCordinates(response.data);
+  })
+
+
   
+  function getCordinates(cordinate) {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 3,
+      center: new google.maps.LatLng(0, 0),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
 
-</div>
+    for (let i = 0; i < cordinate.length; i++) {
+        var icon = {
+          url: cordinate[i].photo, // url
+          scaledSize: new google.maps.Size(40, 25),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(0, 0)
+        };
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(Number(cordinate[i].latitude), Number(cordinate[i].longitude)),
+          map: map,
+          icon: icon
+        });
+        
+        var locationInfo = new google.maps.InfoWindow();
 
-<script type="text/javascript" src="/temp/scripts/app.js"></script>
+        var marker, j;
+
+        google.maps.event.addListener(marker, 'click', (function (marker, j) {
+          return function () {
+            locationInfo.setContent(cordinate[i].name);
+            locationInfo.open(map, marker);
+          }
+        })(marker, j));
+      }
+    } 
+</script>
+
 </body>
 </html>
+
+
+
+
+    
+
+    
+  
+
+    
+
+

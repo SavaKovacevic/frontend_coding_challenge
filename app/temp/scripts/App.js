@@ -92,6 +92,13 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ //STOP LOADER IF DATA IS FETCHED
+
+fetch('https://itk-exam-api.herokuapp.com/api/offices').then(function () {
+  var overlay = document.querySelector('.loader-overlay');
+  overlay.classList.remove("loader-overlay");
+  overlay.classList.add("hide");
+}); //GRID AND LIST VIEW DATA
 
 axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://itk-exam-api.herokuapp.com/api/offices').then(function (response) {
   formatOffices(response.data);
@@ -113,7 +120,8 @@ function formatOffices(offices) {
       containerEl.innerHTML += _newOffice;
     }
   }
-}
+} //CHANGE VIEW
+
 
 var listItems = document.querySelectorAll('li');
 
@@ -123,19 +131,26 @@ for (var i = 0; i < listItems.length; i++) {
     current.classList.remove("active");
     this.className += " active";
     var change = document.getElementById('offices');
+    var map = document.getElementById('map');
 
     if (listItems[0].classList.contains("active")) {
       change.classList.remove("hide");
       change.classList.remove("location-grid");
       change.classList.add("location-list");
+      map.classList.remove("visible");
+      map.classList.add("hide");
     } else if (listItems[1].classList.contains("active")) {
       change.classList.remove("hide");
       change.classList.remove("location-list");
       change.classList.add("location-grid");
+      map.classList.remove("visible");
+      map.classList.add("hide");
     } else {
       change.classList.remove("location-list");
       change.classList.remove("location-grid");
       change.classList.add("hide");
+      map.classList.remove("hide");
+      map.classList.add("visible");
     }
   });
 }
