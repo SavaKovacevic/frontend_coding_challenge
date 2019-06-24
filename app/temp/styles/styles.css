@@ -360,9 +360,12 @@ body {
 
 .loader-overlay {
     position: fixed;
+    display: -webkit-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
     width: 100vw;
     height: 100vh;
     background-color: #13bbd3;
@@ -508,8 +511,10 @@ ul > li:active {
             height: 100px;
             display: inline-block;
             width: 100%;
+            display: -webkit-box;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                    align-items: center;
     }
 
 @media (min-width: 530px) {
@@ -524,6 +529,7 @@ ul > li:active {
         }
 
 .location-list .location-item .info {
+            display: -webkit-box;
             display: flex;
             height: 100px;
             line-height: 100px;
@@ -531,8 +537,11 @@ ul > li:active {
             border-bottom: 3px solid #2da0b1;
             width: 80%;
             display: flex;
-            justify-content: center;
-            flex-direction: column;
+            -webkit-box-pack: center;
+                    justify-content: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                    flex-direction: column;
         }
 
 @media (min-width: 530px) {
