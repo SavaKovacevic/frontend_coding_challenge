@@ -103,3 +103,10 @@ function getCordinates(cordinate) {
         })(marker, j));
     }
 } 
+
+window.addEventListener('load', function () {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://maps.google.com/maps/api/js?sensor=false';
+    document.body.appendChild(script);
+});

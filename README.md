@@ -77,6 +77,7 @@ Now project is ready to run. In terminal start gulp watch task and new browser w
 gulp watch
 ```
 If you want to see completed project navigate to docs folder in repository and open index.html
+You can also see it at https://savakovacevic.github.io/frontend_coding_challenge/
 If you make any changes and want to use it in local or web withohut gulp watch task preform gulp build task
 ```
 gulp build
