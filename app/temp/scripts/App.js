@@ -192,13 +192,6 @@ function getCordinates(cordinate) {
   }
 }
 
-window.addEventListener('load', function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'http://maps.google.com/maps/api/js?sensor=false';
-  document.body.appendChild(script);
-});
-
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
